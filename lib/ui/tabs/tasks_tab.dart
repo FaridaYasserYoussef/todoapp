@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:todoapp/common/appColors.dart';
 import 'package:todoapp/common/taskCard.dart';
 import 'package:todoapp/models/taskModel.dart';
 import 'package:easy_date_timeline/easy_date_timeline.dart';
+import 'package:todoapp/providers/taskProvider.dart';
 
 class TasksTab extends StatefulWidget {
   const TasksTab({super.key});
@@ -12,21 +14,22 @@ class TasksTab extends StatefulWidget {
 }
 
 class _TasksTabState extends State<TasksTab> {
-  List<TaskModel> taskModels = [
-    TaskModel(taskName: "name11111", taskDescription: "task description", date: DateTime.now()),
-    TaskModel(taskName: "name11111", taskDescription: "task description", date: DateTime.now()),
-    TaskModel(taskName: "name11111", taskDescription: "task description", date: DateTime.now()),
-    TaskModel(taskName: "name11111", taskDescription: "task description", date: DateTime.now()),
-    TaskModel(taskName: "name11111", taskDescription: "task description", date: DateTime.now()),
-    TaskModel(taskName: "name11111", taskDescription: "task description", date: DateTime.now()),
-    TaskModel(taskName: "name11111", taskDescription: "task description", date: DateTime.now()),
+  // List<TaskModel> taskModels = [
+  //   TaskModel(taskName: "name11111", taskDescription: "task description", date: DateTime.now()),
+  //   TaskModel(taskName: "name11111", taskDescription: "task description", date: DateTime.now()),
+  //   TaskModel(taskName: "name11111", taskDescription: "task description", date: DateTime.now()),
+  //   TaskModel(taskName: "name11111", taskDescription: "task description", date: DateTime.now()),
+  //   TaskModel(taskName: "name11111", taskDescription: "task description", date: DateTime.now()),
+  //   TaskModel(taskName: "name11111", taskDescription: "task description", date: DateTime.now()),
+  //   TaskModel(taskName: "name11111", taskDescription: "task description", date: DateTime.now()),
 
-  ];
+  // ];
    final EasyInfiniteDateTimelineController _controller =
       EasyInfiniteDateTimelineController();
      DateTime _focusDate = DateTime.now();
   @override
   Widget build(BuildContext context) {
+    var tasksProvider = Provider.of<TaskProvider>(context);
     return Column(
       children: [
 
@@ -90,11 +93,23 @@ class _TasksTabState extends State<TasksTab> {
         ),),
         Expanded(
           flex: 5,
-          child: ListView.builder(
-            itemCount: taskModels.length,
-            itemBuilder: (context, index){
-            return TaskCard(task: taskModels[index]);
-          }),
+          child: StreamBuilder(
+            stream: tasksProvider.getTasksByDate(_focusDate), 
+            builder: (BuildContext context, AsyncSnapshot<List<TaskModel>> snapshot) {
+              if(snapshot.connectionState == ConnectionState.waiting){
+                return Center(child: CircularProgressIndicator(color: AppColors.blueColor,),);
+              }else{
+                if(snapshot.data!.length == 0){
+                  return Center(child: Text("No tasks added yet", style: TextStyle(fontSize: 20),));
+                }
+                return ListView.builder(
+                itemCount: snapshot.data!.length,
+                itemBuilder: (context, index){
+                return TaskCard(task: snapshot.data![index]);
+              });
+              }
+            },   
+          ),
         )
       ],
     );

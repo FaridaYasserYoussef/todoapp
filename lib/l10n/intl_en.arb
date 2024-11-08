@@ -1,0 +1,18 @@
+{
+    "edit" : "Edit",
+    "delete": "Delete",
+    "tasksList": "Tasks List",
+    "settings": "Settings",
+    "language": "Language",
+    "darkMode": "Dark Mode",
+    "editTask": "Edit Task",
+    "addNewTask": "Add New Task",
+    "selectedDate": "Selected Date",
+    "add": "Add",
+    "taskName": "Task Name",
+    "taskNameErrorMessageOne": "Task Name cannot be empty",
+    "taskNameErrorMessageTwo": "Task Name cannot be less than 5 letters",
+    "taskDescription": "Task Description",
+    "taskDescriptionErrorMessageOne": "Task Description cannot be empty",
+    "taskDescriptionErrorMessageTwo": "Task Description cannot be less than 6 letters"
+}

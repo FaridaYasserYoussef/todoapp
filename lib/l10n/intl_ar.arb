@@ -1,0 +1,18 @@
+{
+    "edit" : "تعديل",
+    "delete": "مسح",
+    "tasksList": "المهام",
+    "settings": "الإعدادات",
+    "language": "اللغة",
+    "darkMode": "الوضع المظلم",
+    "editTask": "تعديل المهمة",
+    "addNewTask": "إضافة مهمة جديدة",
+    "selectedDate": "التاريخ المختار",
+    "add": "إضافة",
+    "taskName": "إسم المهمة",
+    "taskNameErrorMessageOne": "لا يمكن لإسم المهمة أن يكون فارغ",
+    "taskNameErrorMessageTwo": "لا يمكن لإسم المهمة ان يكون اقل من 5 حروف",
+    "taskDescription": "وصف المهمة",
+    "taskDescriptionErrorMessageOne": "لا يمكن لوصف المهمة أن يكون فارغ",
+    "taskDescriptionErrorMessageTwo": "لا يمكن لوصف المهمة ان يكون اقل من 6 حروف"
+}
