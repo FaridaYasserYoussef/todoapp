@@ -41,7 +41,7 @@ class _SignupScreenState extends State<SignupScreen> {
                 SizedBox(height: 100,),
                 Padding(
                   padding: const EdgeInsets.all(8.0),
-                  child: Center(child: Text("Welcome Onboard!!", style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),)),
+                  child: Center(child: Text("Welcome Onboard!!", style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20, color: Colors.black),)),
                 ),
                 authProvider.loading == true? Center(child: CircularProgressIndicator(color: AppColors.blueColor),):SizedBox(),
                 CustomAuthTextField(hintText: "Enter Your name", controller: nameController, 
@@ -96,7 +96,7 @@ class _SignupScreenState extends State<SignupScreen> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Text("Already have an account? "),
+                    Text("Already have an account? ", style: TextStyle(color: Colors.black),),
                     TextButton(
                     
                     onPressed: (){

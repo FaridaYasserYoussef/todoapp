@@ -39,7 +39,7 @@ class _LoginSreenState extends State<LoginSreen> {
             children: [
               Padding(
                 padding: const EdgeInsets.all(8.0),
-                child: Center(child: Text("Welcome Back!!", style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),)),
+                child: Center(child: Text("Welcome Back!!", style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20, color: Colors.black),)),
               ),
               authProvider.loading == true? Center(child: CircularProgressIndicator(color: AppColors.blueColor),):SizedBox(),
 
@@ -77,7 +77,7 @@ class _LoginSreenState extends State<LoginSreen> {
                 emailController.text = "";
                 passwordController.text = "";
                 if(FirebaseAuth.instance.currentUser!.uid != null){
-                Navigator.of(context).pushNamed(HomePage.routeName);
+                Navigator.of(context).pushReplacementNamed(HomePage.routeName);
 
                 }
                }
@@ -86,7 +86,7 @@ class _LoginSreenState extends State<LoginSreen> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Text("Don't have an account? "),
+                  Text("Don't have an account? ", style: TextStyle(color: Colors.black),),
                   TextButton(
                   
                   onPressed: (){

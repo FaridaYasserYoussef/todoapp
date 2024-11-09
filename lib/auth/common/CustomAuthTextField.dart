@@ -18,13 +18,13 @@ class _CustomAuthTextFieldState extends State<CustomAuthTextField> {
     return  Padding(
       padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 25),
       child: TextFormField(
+        
         obscureText: widget.type == "password"? obscureText: false,
         controller: widget.controller,
         validator: widget.validator,
-        style: TextStyle(fontSize: 15),
+        style: TextStyle(fontSize: 15, color: Colors.black),
         
         decoration: InputDecoration(
-          
           suffixIcon: widget.type == "password"? IconButton(icon: Icon(obscureText == false? Icons.visibility_off: Icons.visibility), onPressed: (){
             setState(() {
               obscureText = !obscureText;
